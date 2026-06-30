@@ -447,11 +447,10 @@
     <span class="eyebrow reveal">momentos</span>
     <h2 class="title-script reveal">Nossa galeria</h2>
     <div class="rule reveal"></div>
-    <p class="lead reveal">Um pouquinho de nós. As imagens abaixo são exemplos — troque pelas suas fotos favoritas.</p>
+    <p class="lead reveal">Um pouquinho de nós. Clique nas fotos para ampliar.</p>
 
-    <!-- EDITÁVEL: fotos — substitua os endereços em src="" pelas suas imagens.
-         Se a internet falhar, aparece um quadro elegante no lugar. -->
-    <div class="gallery">
+    <!-- BLOCO 1 - SEMPRE VISÍVEL (9 fotos) -->
+    <div class="gallery" id="galeria-bloco-1">
 <figure class="photo reveal" onclick="openLb(0)"><img src="001.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal wide" onclick="openLb(1)"><img src="002.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(2)"><img src="003.jpg" alt="" loading="lazy"></figure>
@@ -461,6 +460,10 @@
 <figure class="photo reveal" onclick="openLb(6)"><img src="007.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(7)"><img src="008.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(8)"><img src="009.jpg" alt="" loading="lazy"></figure>
+    </div>
+
+    <!-- BLOCO 2 (OCULTO) - 9 fotos -->
+    <div class="gallery" id="galeria-bloco-2" style="display: none;">
 <figure class="photo reveal wide" onclick="openLb(9)"><img src="010.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(10)"><img src="011.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(11)"><img src="012.jpg" alt="" loading="lazy"></figure>
@@ -470,6 +473,10 @@
 <figure class="photo reveal" onclick="openLb(15)"><img src="016.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(16)"><img src="017.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(17)"><img src="018.jpg" alt="" loading="lazy"></figure>
+    </div>
+
+    <!-- BLOCO 3 (OCULTO) - 9 fotos -->
+    <div class="gallery" id="galeria-bloco-3" style="display: none;">
 <figure class="photo reveal" onclick="openLb(18)"><img src="019.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal wide" onclick="openLb(19)"><img src="020.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(20)"><img src="021.jpg" alt="" loading="lazy"></figure>
@@ -479,6 +486,10 @@
 <figure class="photo reveal" onclick="openLb(24)"><img src="025.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal wide" onclick="openLb(25)"><img src="026.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(26)"><img src="027.jpg" alt="" loading="lazy"></figure>
+    </div>
+
+    <!-- BLOCO 4 (OCULTO) - 8 fotos (últimas) -->
+    <div class="gallery" id="galeria-bloco-4" style="display: none;">
 <figure class="photo reveal" onclick="openLb(27)"><img src="028.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(28)"><img src="029.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(29)"><img src="030.jpg" alt="" loading="lazy"></figure>
@@ -488,9 +499,42 @@
 <figure class="photo reveal wide" onclick="openLb(33)"><img src="034.jpg" alt="" loading="lazy"></figure>
 <figure class="photo reveal" onclick="openLb(34)"><img src="035.jpg" alt="" loading="lazy"></figure>
     </div>
-    <p class="gallery-note reveal">Toque em qualquer foto para ampliar.</p>
+
+    <!-- BOTÃO CARREGAR MAIS -->
+    <div style="text-align: center; margin-top: 42px;">
+      <button id="btn-galeria" onclick="toggleGaleriaBloco()" style="background: var(--sage-deep); color: white; padding: 12px 36px; border: none; border-radius: 4px; font-size: 15px; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">
+        ↓ Carregar mais fotos ↓
+      </button>
+    </div>
+
+    <p class="gallery-note reveal" style="margin-top: 28px;">Toque em qualquer foto para ampliar.</p>
   </div>
 </section>
+
+<script>
+let galeriaBlock = 1;
+const totalBlocos = 4;
+
+function toggleGaleriaBloco() {
+  const btn = document.getElementById('btn-galeria');
+  
+  if (galeriaBlock < totalBlocos) {
+    galeriaBlock++;
+    document.getElementById('galeria-bloco-' + galeriaBlock).style.display = 'grid';
+    
+    if (galeriaBlock === totalBlocos) {
+      btn.textContent = '↑ Carregar menos fotos ↑';
+    }
+  } else {
+    // Voltar ao bloco 1
+    for (let i = 2; i <= totalBlocos; i++) {
+      document.getElementById('galeria-bloco-' + i).style.display = 'none';
+    }
+    galeriaBlock = 1;
+    btn.textContent = '↓ Carregar mais fotos ↓';
+  }
+}
+</script>
 
 <!-- ============ PROGRAMAÇÃO ============ -->
 <section id="programacao">
