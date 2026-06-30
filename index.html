@@ -664,27 +664,7 @@
         </div>
       </div>
 
-      <!-- SEGUNDO BLOCO (OCULTO) -->
-      <div id="ilhabela-bloco-2" style="display: none; margin-top: 20px;">
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 850px; margin-left: auto; margin-right: auto;">
-          <div class="reveal" style="border-radius: 8px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.12); height: 240px;">
-            <img src="pousada-02.jpg" alt="Pousada Singuitta piscina" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div class="reveal" style="border-radius: 8px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.12); height: 240px;">
-            <img src="pousada-03.jpg" alt="Pousada Singuitta corredor coqueiros" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div class="reveal" style="border-radius: 8px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.12); height: 240px;">
-            <img src="pousada-04.jpg" alt="Pousada Singuitta terraço" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-        </div>
-      </div>
-
-      <!-- BOTÃO CARREGAR MAIS -->
-      <div style="text-align: center; margin-top: 36px;">
-        <button id="btn-ilhabela" onclick="toggleIlhabelaBloco()" style="background: var(--sage-deep); color: white; padding: 12px 36px; border: none; border-radius: 4px; font-size: 15px; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">
-          ↓ Carregar mais fotos ↓
-        </button>
-      </div>
+      <!-- Sem bloco 2 - apenas 3 praias -->
     </div>
 
     <!-- INFO ILHABELA -->
@@ -785,21 +765,6 @@
 </section>
 
 <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" style="color: var(--cream-2)"><path fill="currentColor" d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,90 L0,90 Z"/></svg>
-
-<script>
-function toggleIlhabelaBloco() {
-  const bloco = document.getElementById('ilhabela-bloco-2');
-  const btn = document.getElementById('btn-ilhabela');
-  
-  if (bloco.style.display === 'none') {
-    bloco.style.display = 'block';
-    btn.textContent = '↑ Carregar menos fotos ↑';
-  } else {
-    bloco.style.display = 'none';
-    btn.textContent = '↓ Carregar mais fotos ↓';
-  }
-}
-</script>
 
 <!-- ============ LOCAL ============ -->
 <section id="local">
