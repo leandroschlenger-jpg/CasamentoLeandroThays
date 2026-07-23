@@ -248,12 +248,26 @@
     aspect-ratio:1;cursor:pointer;overflow:hidden;
     border-radius:8px;box-shadow:var(--shadow-light);
     transition:all .3s ease;
+    background:linear-gradient(90deg,#e0d7c8 25%,#ede8df 50%,#e0d7c8 75%);
+    background-size:200% 100%;
+    animation:loading 1.5s infinite;
   }
   .photo:hover{
     transform:scale(1.02);box-shadow:var(--shadow);
   }
-  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    opacity:0;transition:opacity .6s ease;
+  }
+  .photo img.loaded{
+    opacity:1;animation:none;
+  }
   .photo.wide{grid-column:span 2}
+  
+  @keyframes loading{
+    0%{background-position:200% 0}
+    100%{background-position:-200% 0}
+  }
   
   @media(max-width:1024px){
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -264,6 +278,14 @@
     .gallery{grid-template-columns:repeat(1,1fr);gap:12px}
     .photo.wide{grid-column:span 1;grid-row:span 2;aspect-ratio:1}
     .photo{aspect-ratio:1;height:300px}
+  }
+
+  /* Performance */
+  .gallery {
+    will-change:opacity;
+  }
+  .photo {
+    contain:layout style paint;
   }
 
   /* Botão carregar mais */
@@ -554,7 +576,7 @@
     
     <!-- VÍDEO DO PEDIDO -->
     <div style="position:relative;width:100%;max-width:600px;margin:42px auto;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);">
-      <video controls preload="metadata" playsinline style="width:100%;height:100%;">
+      <video controls preload="metadata" playsinline poster="001.jpg" style="width:100%;height:100%;background:#000;">
         <source src="pedido.mp4" type="video/mp4">
       </video>
     </div>
@@ -1191,6 +1213,34 @@
     if(!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('mobile-open')){
       closeMenu();
     }
+  });
+
+  // ============ LAZY LOAD IMAGES ============
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.onload = () => {
+            img.classList.add('loaded');
+          };
+          img.onerror = () => {
+            // Se falhar, carrega sem o data-src
+            img.src = img.dataset.src;
+          };
+          imageObserver.unobserve(img);
+        } else {
+          img.classList.add('loaded');
+          imageObserver.unobserve(img);
+        }
+      }
+    });
+  }, {rootMargin:'50px'});
+
+  // Observar todas as imagens
+  document.querySelectorAll('.photo img').forEach(img => {
+    imageObserver.observe(img);
   });
 </script>
 
