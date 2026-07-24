@@ -321,6 +321,15 @@
     contain:layout style paint;
   }
 
+  /* ============ TERMÔMETRO DESTINOS ============ */
+  #dest1, #dest2, #dest3, #dest4, #dest5, #dest6 {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  #dest1:hover, #dest2:hover, #dest3:hover, #dest4:hover, #dest5:hover, #dest6:hover {
+    transform: scale(1.1) !important;
+  }
+
   /* Botão carregar mais */
   .load-more-btn{
     margin-top:42px;text-align:center;
@@ -944,6 +953,76 @@
       </p>
     </div>
 
+    <p class="lead reveal" style="margin-top:52px">✈️ Termômetro de Destinos</p>
+    
+    <!-- TERMÔMETRO DE VIAGENS -->
+    <div style="max-width:700px;margin:42px auto;padding:0 16px">
+      <div style="position:relative;margin-bottom:28px">
+        <!-- Barra de progresso -->
+        <div style="background:rgba(110,135,103,.1);height:32px;border-radius:16px;overflow:hidden;box-shadow:inset 0 2px 8px rgba(0,0,0,.1)">
+          <div id="thermometerBar" style="height:100%;background:linear-gradient(90deg,#ff6b6b 0%,#ffa94d 20%,#51cf66 40%,#339af0 60%,#845ef7 80%,#ff8cc3 100%);width:0%;transition:width 0.8s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 0 20px rgba(51,154,240,.4)"></div>
+        </div>
+        
+        <!-- Marcadores de destinos -->
+        <div style="position:relative;margin-top:12px;height:60px">
+          <!-- Guarujá 100 -->
+          <div style="position:absolute;left:8%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest1">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$100</div>
+            <div style="font-size:24px">🏖️</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Guarujá</div>
+          </div>
+
+          <!-- Ubatuba 500 -->
+          <div style="position:absolute;left:22%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest2">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$500</div>
+            <div style="font-size:24px">🌴</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Ubatuba</div>
+          </div>
+
+          <!-- Ilhabela 1000 -->
+          <div style="position:absolute;left:38%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest3">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$1.000</div>
+            <div style="font-size:24px">🏝️</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Ilhabela</div>
+          </div>
+
+          <!-- Angra 2000 -->
+          <div style="position:absolute;left:54%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest4">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$2.000</div>
+            <div style="font-size:24px">⛰️</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Angra</div>
+          </div>
+
+          <!-- Amazônia 3500 -->
+          <div style="position:absolute;left:70%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest5">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$3.500</div>
+            <div style="font-size:24px">🌳</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Amazônia</div>
+          </div>
+
+          <!-- Jamaica 5000 -->
+          <div style="position:absolute;left:86%;top:0;text-align:center;opacity:0.7;transition:opacity 0.3s" id="dest6">
+            <div style="font-size:11px;font-family:'Jost',sans-serif;color:var(--ink-soft);margin-bottom:4px;font-weight:500">até R$5.000</div>
+            <div style="font-size:24px">🌺</div>
+            <div style="font-size:11px;color:var(--sage-deep);font-weight:600;margin-top:4px">Jamaica</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contador dinâmico -->
+      <div style="text-align:center;margin-top:32px;padding:20px;background:rgba(110,135,103,.08);border-radius:12px">
+        <p style="font-family:'Jost',sans-serif;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Meta Atual</p>
+        <div style="font-size:32px;font-weight:700;color:var(--sage-deep);margin-bottom:4px">
+          <span id="currentValue">R$ 0</span> / <span id="nextGoal">R$ 100</span>
+        </div>
+        <p style="font-size:13px;color:var(--ink-soft)">Próximo destino: <span id="nextDestination" style="font-weight:600;color:var(--sage-deep)">Guarujá 🏖️</span></p>
+      </div>
+
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:20px;font-style:italic;text-align:center">
+        💝 Cada donação nos aproxima de uma nova aventura!
+      </p>
+    </div>
+
     <p class="lead reveal" style="margin-top:42px">PIX - Lua de Mel & Aventuras</p>
       <p style="font-family:'Jost',sans-serif;font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">PIX - Lua de Mel</p>
       <div class="gift-bar">
@@ -1230,6 +1309,61 @@
       closeMenu();
     }
   });
+
+  // ============ TERMÔMETRO DE VIAGENS ============
+  const destinations = [
+    { name: "Guarujá 🏖️", value: 100, element: "dest1" },
+    { name: "Ubatuba 🌴", value: 500, element: "dest2" },
+    { name: "Ilhabela 🏝️", value: 1000, element: "dest3" },
+    { name: "Angra dos Reis ⛰️", value: 2000, element: "dest4" },
+    { name: "Amazônia 🌳", value: 3500, element: "dest5" },
+    { name: "Jamaica 🌺", value: 5000, element: "dest6" }
+  ];
+
+  function updateThermometer(currentAmount = 0) {
+    // Calcular percentual
+    const maxValue = 5000;
+    const percentage = Math.min((currentAmount / maxValue) * 100, 100);
+    
+    // Atualizar barra
+    document.getElementById('thermometerBar').style.width = percentage + '%';
+    
+    // Atualizar valor exibido
+    document.getElementById('currentValue').textContent = 'R$ ' + currentAmount.toLocaleString('pt-BR');
+    
+    // Encontrar próximo destino
+    let nextDestination = destinations[0];
+    for (let dest of destinations) {
+      if (currentAmount >= dest.value) {
+        nextDestination = dest;
+      } else {
+        break;
+      }
+    }
+    
+    // Atualizar próximo destino
+    document.getElementById('nextGoal').textContent = 'R$ ' + nextDestination.value.toLocaleString('pt-BR');
+    document.getElementById('nextDestination').textContent = nextDestination.name;
+    
+    // Destacar destinos atingidos
+    destinations.forEach((dest, index) => {
+      const element = document.getElementById(dest.element);
+      if (currentAmount >= dest.value) {
+        element.style.opacity = '1';
+        element.style.transform = 'scale(1.05)';
+      } else {
+        element.style.opacity = '0.6';
+        element.style.transform = 'scale(1)';
+      }
+    });
+  }
+
+  // Inicializar com valor aleatório para demo (remover em produção)
+  // Descomente a linha abaixo se quiser testar com um valor
+  // updateThermometer(2500);
+
+  // Chamar ao carregar página
+  updateThermometer(0);
 
   // ============ LAZY LOAD IMAGES ============
   const imageObserver = new IntersectionObserver((entries) => {
