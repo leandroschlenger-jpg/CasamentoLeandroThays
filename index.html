@@ -244,40 +244,73 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
     margin-top:52px;
   }
-  .photo{
-    aspect-ratio:1;cursor:pointer;overflow:hidden;
-    border-radius:8px;box-shadow:var(--shadow-light);
-    transition:all .3s ease;
-    background:linear-gradient(90deg,#e0d7c8 25%,#ede8df 50%,#e0d7c8 75%);
-    background-size:200% 100%;
-    animation:loading 1.5s infinite;
+  /* ============ GALERIA ELEGANTE ============ */
+  .gallery-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 42px auto;
   }
-  .photo:hover{
-    transform:scale(1.02);box-shadow:var(--shadow);
+
+  .gallery-grid {
+    display: grid;
+    gap: 16px;
+    width: 100%;
   }
-  .photo img{
-    width:100%;height:100%;object-fit:cover;display:block;
-    opacity:0;transition:opacity .6s ease;
+
+  @media(max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .photo {
+      height: 280px;
+      aspect-ratio: auto;
+    }
   }
-  .photo img.loaded{
-    opacity:1;animation:none;
+
+  @media(min-width: 769px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
   }
-  .photo.wide{grid-column:span 2}
-  
-  @keyframes loading{
-    0%{background-position:200% 0}
-    100%{background-position:-200% 0}
+
+  .photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: linear-gradient(135deg, #f5ede3 0%, #ede8df 100%);
   }
-  
-  @media(max-width:1024px){
-    .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
-    .photo.wide{grid-column:span 1}
+
+  .photo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
   }
-  
-  @media(max-width:768px){
-    .gallery{grid-template-columns:repeat(1,1fr);gap:12px}
-    .photo.wide{grid-column:span 1;grid-row:span 2;aspect-ratio:1}
-    .photo{aspect-ratio:1;height:300px}
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .photo img.loaded {
+    opacity: 1;
+  }
+
+  .photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+    z-index: 1;
   }
 
   /* Performance */
@@ -545,7 +578,7 @@
     
     <!-- CTA BUTTONS -->
     <div class="hero-cta reveal">
-      <a href="#rsvp" class="btn btn-primary">💝 Confirmar Presença</a>
+      <a href="#presentes" class="btn btn-primary">💝 Presentes & Lua de Mel</a>
       <a href="#historia" class="btn btn-secondary">📖 Nossa História</a>
     </div>
   </div>
@@ -836,10 +869,12 @@
       Conheça nosso refúgio à beira-mar em Borrifos! 🌊
     </p>
 
-    <div class="gallery" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:42px">
-      <figure class="photo reveal" onclick="openLb(38)"><img src="maritacas-01.jpg" alt="Casa Maritacas - Vista" loading="lazy"></figure>
-      <figure class="photo reveal" onclick="openLb(39)"><img src="maritacas-02.jpg" alt="Casa Maritacas - Ambiente" loading="lazy"></figure>
-      <figure class="photo reveal" onclick="openLb(40)"><img src="maritacas-03.jpg" alt="Casa Maritacas - Espaço" loading="lazy"></figure>
+    <div class="gallery-container reveal">
+      <div class="gallery-grid">
+        <figure class="photo" onclick="openLb(38)"><img src="maritacas-01.jpg" alt="Casa Maritacas - Vista" loading="lazy"></figure>
+        <figure class="photo" onclick="openLb(39)"><img src="maritacas-02.jpg" alt="Casa Maritacas - Ambiente" loading="lazy"></figure>
+        <figure class="photo" onclick="openLb(40)"><img src="maritacas-03.jpg" alt="Casa Maritacas - Espaço" loading="lazy"></figure>
+      </div>
     </div>
 
     <div class="info-cards" style="margin-top:42px">
@@ -940,37 +975,6 @@
   <div class="parallax-element" style="top:50%;left:5%;animation-delay:2s;font-size:100px">💎</div>
   <div class="parallax-element" style="top:70%;right:12%;animation-delay:1.5s;font-size:90px">✨</div>
   <div class="parallax-element" style="top:35%;left:12%;animation-delay:2.5s">💨</div>
-</section>
-
-<!-- CONFIRMAÇÃO -->
-<section id="confirmacao">
-  <div class="wrap center">
-    <div class="section-header">
-      <span class="eyebrow reveal">confirmado</span>
-      <h2 class="title-script reveal">Já Contamos com Você!</h2>
-      <div class="rule reveal"></div>
-    </div>
-    
-    <p class="lead reveal">
-      Todos os convites foram feitos com muito carinho. Já temos certeza de quem estará ao nosso lado nesse momento tão especial.
-    </p>
-
-    <div style="background:rgba(30,123,140,.08);padding:42px 32px;border-radius:12px;margin:52px auto;max-width:600px;border-left:4px solid var(--ocean)">
-      <p style="font-size:20px;line-height:1.8;color:var(--ink);margin-bottom:20px">
-        Se tiver qualquer dúvida sobre o fim de semana ou precisar nos contactar:
-      </p>
-      <p style="font-size:16px;color:var(--sage-deep);font-weight:500;margin-bottom:12px">
-        📱 WhatsApp: <a href="https://wa.me/5511982748823" target="_blank" style="color:var(--sage-deep);text-decoration:none;border-bottom:2px solid var(--sage-deep)">(11) 9827-48823</a>
-      </p>
-      <p style="font-size:16px;color:var(--sage-deep);font-weight:500">
-        ✉️ Email: <a href="mailto:leandroschlenger@gmail.com" style="color:var(--sage-deep);text-decoration:none;border-bottom:2px solid var(--sage-deep)">leandroschlenger@gmail.com</a>
-      </p>
-    </div>
-
-    <p class="lead reveal" style="margin-top:42px;opacity:.85">
-      Estamos ansiosos para celebrar com você em Ilhabela! 🌊⛵
-    </p>
-  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1133,28 +1137,6 @@
     setTimeout(() => { btn.textContent = originalText; }, 2000);
   }
 
-  // ============ RSVP SUBMIT ============
-  function submitRsvp(e){
-    e.preventDefault();
-    
-    const name = document.getElementById('rsvpName').value;
-    const email = document.getElementById('rsvpEmail').value;
-    const phone = document.getElementById('rsvpPhone').value;
-    const guests = document.getElementById('rsvpGuests').value;
-    const message = document.getElementById('rsvpMessage').value;
-
-    const waMsg = `Olá! Confirmo minha presença no casamento!\n\n👤 Nome: ${name}\n✉️ Email: ${email}\n📱 Telefone: ${phone}\n👥 Acompanhantes: ${guests}\n💬 Mensagem: ${message || '(nenhuma)'}`;
-
-    const waLink = `https://wa.me/5511982748823?text=${encodeURIComponent(waMsg)}`;
-    
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Redirecionando...';
-    
-    setTimeout(() => {
-      window.open(waLink, '_blank');
-      btn.textContent = '💝 Confirmar Presença';
-    }, 1000);
-  }
 
   // ============ ACTIVE NAV LINK ============
   const sections = document.querySelectorAll('section[id]');
