@@ -965,7 +965,7 @@
       <!-- BARRA DE PROGRESSO PRINCIPAL -->
       <div style="max-width:100%;margin-bottom:48px;">
         <div style="background:rgba(110,135,103,.1);height:64px;border-radius:32px;overflow:hidden;box-shadow:inset 0 4px 16px rgba(0,0,0,.08);margin-bottom:32px;position:relative;">
-          <div id="thermometerBar" style="height:100%;background:linear-gradient(90deg,#ff6b6b 0%,#ffa94d 20%,#51cf66 40%,#339af0 60%,#845ef7 80%,#ff8cc3 100%);width:18.75%;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 0 32px rgba(51,154,240,.6);position:relative;display:flex;align-items:center;justify-content:flex-end;padding-right:12px">
+          <div id="thermometerBar" style="height:100%;background:linear-gradient(90deg,#51cf66 0%,#339af0 40%,#845ef7 70%,#ff8cc3 100%);width:37.5%;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 0 32px rgba(51,154,240,.6);position:relative;display:flex;align-items:center;justify-content:flex-end;padding-right:12px">
             <div style="font-size:24px;color:white;text-shadow:0 2px 8px rgba(0,0,0,.2)">💰</div>
           </div>
         </div>
@@ -977,50 +977,41 @@
             <span id="currentValue">R$ 1.500</span>
           </div>
           <p style="font-size:15px;color:var(--ink-soft);margin-bottom:8px">
-            Próximo: <span id="nextDestination" style="font-weight:600;color:var(--sage-deep);font-size:17px">Angra dos Reis</span>
+            Próximo: <span id="nextDestination" style="font-weight:600;color:var(--sage-deep);font-size:17px">Ilhabela</span>
           </p>
-          <p style="font-size:13px;color:#FF6B6B;font-weight:600">
-            Faltam <span id="faltaValor">R$ 3.500</span>
+          <p style="font-size:13px;color:#51CF66;font-weight:600">
+            Faltam <span id="faltaValor">R$ 0</span> para completar
           </p>
         </div>
       </div>
 
-      <!-- GRID DE DESTINOS -->
+      <!-- GRID DE DESTINOS (5 apenas) -->
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;padding:0;">
-        <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid rgba(110,135,103,.1);opacity:0.5;transition:all 0.3s ease" id="allDest1">
-          <div style="font-size:42px;margin-bottom:8px">🏖️</div>
-          <div style="font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:4px">Guarujá</div>
-          <div style="font-size:11px;color:var(--ink-soft)">R$ 100</div>
-        </div>
-
-        <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid rgba(110,135,103,.1);opacity:0.5;transition:all 0.3s ease" id="allDest2">
-          <div style="font-size:42px;margin-bottom:8px">🌴</div>
-          <div style="font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:4px">Ubatuba</div>
-          <div style="font-size:11px;color:var(--ink-soft)">R$ 500</div>
-        </div>
-
-        <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid var(--sage-deep);opacity:1;transition:all 0.3s ease" id="allDest3">
+        
+        <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid var(--sage-deep);opacity:1;transition:all 0.3s ease;position:relative" id="allDest3">
+          <div style="position:absolute;top:8px;right:8px;font-size:18px">✓</div>
           <div style="font-size:42px;margin-bottom:8px">🏝️</div>
           <div style="font-size:12px;font-weight:600;color:var(--sage-deep);margin-bottom:4px">Ilhabela</div>
-          <div style="font-size:11px;color:var(--sage-deep);font-weight:600">✓ R$ 1.000</div>
+          <div style="font-size:11px;color:var(--sage-deep);font-weight:600">50% R$ 1.000</div>
         </div>
 
-        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.08);text-align:center;border:2px dashed var(--ink-soft);opacity:0.6;transition:all 0.3s ease" id="allDest4">
+        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.08);text-align:center;border:2px dashed rgba(132,94,247,0.8);opacity:0.8;transition:all 0.3s ease" id="allDest4">
+          <div style="position:absolute;top:8px;right:8px;font-size:16px;opacity:0.4">◐</div>
           <div style="font-size:42px;margin-bottom:8px">⛰️</div>
           <div style="font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:4px">Angra Reis</div>
-          <div style="font-size:11px;color:var(--ink-soft)">R$ 5.000</div>
+          <div style="font-size:11px;color:var(--ink-soft)">Próxima: R$ 5.000</div>
         </div>
 
-        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.08);text-align:center;border:2px dashed var(--ink-soft);opacity:0.6;transition:all 0.3s ease" id="allDest5">
+        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.06);text-align:center;border:2px dashed rgba(132,94,247,0.4);opacity:0.6;transition:all 0.3s ease" id="allDest5">
           <div style="font-size:42px;margin-bottom:8px">🌳</div>
           <div style="font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:4px">Amazônia</div>
           <div style="font-size:11px;color:var(--ink-soft)">R$ 7.000</div>
         </div>
 
-        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.1);text-align:center;border:2px dashed rgba(132,94,247,0.5);opacity:0.6;transition:all 0.3s ease" id="allDest6">
+        <div style="padding:18px;border-radius:12px;background:rgba(132,94,247,0.05);text-align:center;border:2px dashed rgba(132,94,247,0.3);opacity:0.5;transition:all 0.3s ease" id="allDest6">
           <div style="font-size:42px;margin-bottom:8px">🌺</div>
-          <div style="font-size:12px;font-weight:600;color:rgba(132,94,247,0.7);margin-bottom:4px">Jamaica</div>
-          <div style="font-size:11px;color:rgba(132,94,247,0.6)">R$ 8.000</div>
+          <div style="font-size:12px;font-weight:600;color:rgba(132,94,247,0.6);margin-bottom:4px">Jamaica</div>
+          <div style="font-size:11px;color:rgba(132,94,247,0.5)">R$ 8.000</div>
         </div>
       </div>
     </div>
@@ -1271,8 +1262,6 @@
 
   // ============ TERMÔMETRO: JORNADA DE AVENTURAS ============
   const destinations = [
-    { name: "Guarujá", value: 100, emoji: "🏖️", element: "allDest1" },
-    { name: "Ubatuba", value: 500, emoji: "🌴", element: "allDest2" },
     { name: "Ilhabela", value: 1000, emoji: "🏝️", element: "allDest3" },
     { name: "Angra dos Reis", value: 5000, emoji: "⛰️", element: "allDest4" },
     { name: "Amazônia", value: 7000, emoji: "🌳", element: "allDest5" },
@@ -1302,25 +1291,27 @@
     }
     
     // Próximo destino e valor faltante
-    if (nextIndex < destinations.length - 1) {
-      const proximoDestino = destinations[nextIndex + 1];
-      document.getElementById('nextDestination').textContent = proximoDestino.name;
-      const falta = proximoDestino.value - currentAmount;
-      document.getElementById('faltaValor').textContent = 'R$ ' + Math.max(0, falta).toLocaleString('pt-BR');
-    }
+    document.getElementById('nextDestination').textContent = nextDestination.name;
+    const falta = nextDestination.value - currentAmount;
+    document.getElementById('faltaValor').textContent = 'R$ ' + Math.max(0, falta).toLocaleString('pt-BR');
     
     // Atualizar cards de destinos
     destinations.forEach((dest, idx) => {
       const element = document.getElementById(dest.element);
       if (idx <= nextIndex) {
-        // Conquistado
+        // Conquistado ou em andamento
         element.style.opacity = '1';
         element.style.borderColor = 'var(--sage-deep)';
         element.style.backgroundColor = 'white';
+      } else if (idx === nextIndex + 1) {
+        // Próximo destino
+        element.style.opacity = '0.8';
+        element.style.borderColor = 'rgba(132,94,247,0.8)';
+        element.style.backgroundColor = 'rgba(132,94,247,0.08)';
       } else {
-        // Não conquistado
-        element.style.opacity = '0.6';
-        element.style.borderColor = idx === nextIndex + 1 ? 'rgba(132,94,247,0.5)' : 'rgba(0,0,0,0.1)';
+        // Futuros
+        element.style.opacity = Math.max(0.5, 1 - (idx - nextIndex - 1) * 0.15);
+        element.style.borderColor = 'rgba(132,94,247,' + (0.4 - (idx - nextIndex) * 0.1) + ')';
       }
     });
   }
