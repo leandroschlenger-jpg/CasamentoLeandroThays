@@ -957,53 +957,56 @@
       </p>
     </div>
 
-    <!-- TERMÔMETRO: BARRA COM PATAMARES -->
+    <!-- TERMÔMETRO: BARRA COM PATAMARES E FOTOS -->
     <div style="max-width:100%;margin:64px 0;padding:0 16px;">
       
-      <!-- BARRA DE PROGRESSO COM PATAMARES -->
+      <!-- BARRA DE PROGRESSO COM PATAMARES E FOTOS -->
       <div style="max-width:100%;margin-bottom:48px;">
         <!-- Barra container -->
         <div style="position:relative;height:240px;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.15);background:#f0f0f0">
           
-          <!-- Fundo preto e branco (não preenchido) -->
-          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, #000 0%, #333 25%, #555 50%, #777 75%, #999 100%);filter:grayscale(100%);z-index:0"></div>
+          <!-- Fundo com fotos (preto e branco - não preenchido) -->
+          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(50,50,50,.7) 25%, rgba(100,100,100,.7) 50%, rgba(150,150,150,.7) 75%, rgba(200,200,200,.7) 100%);background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 300%22><defs><linearGradient id=%22g1%22><stop offset=%220%25%22 style=%22stop-color:%23111;stop-opacity:1%22/><stop offset=%22100%25%22 style=%22stop-color:%23666;stop-opacity:1%22/></linearGradient></defs><rect width=%221200%22 height=%22300%22 fill=%22url(%23g1)%22/><circle cx=%22150%22 cy=%22100%22 r=%2280%22 fill=%22%23333%22 opacity=%220.3%22/><path d=%22M300,200 Q400,80 500,200 T700,200 L700,300 L300,300 Z%22 fill=%22%23444%22 opacity=%220.2%22/><path d=%22M800,150 Q900,50 1000,150 L1000,300 L800,300 Z%22 fill=%22%23555%22 opacity=%220.15%22/></svg>');background-size:cover;background-position:center;filter:grayscale(100%) contrast(1.1);z-index:0"></div>
           
-          <!-- Preenchimento colorido (progresso) -->
-          <div id="thermometerBar" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg, #51cf66 0%, #339af0 40%, #845ef7 70%, #ff8cc3 100%);width:37.5%;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;filter:saturate(120%)"></div>
+          <!-- Preenchimento colorido com fotos (progresso) -->
+          <div id="thermometerBar" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg, #51cf66 0%, #339af0 40%, #845ef7 70%, #ff8cc3 100%);width:37.5%;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;filter:saturate(130%) brightness(1.1);box-shadow:inset -2px 0 12px rgba(0,0,0,.2)"></div>
+          
+          <!-- Overlay de gradient no preenchimento -->
+          <div id="thermometerOverlay" class="hidden" style="position:absolute;top:0;left:0;height:100%;width:37.5%;background:linear-gradient(135deg, rgba(81,207,102,.15) 0%, rgba(51,154,240,.15) 40%, rgba(132,94,247,.15) 70%, rgba(255,140,195,.15) 100%);z-index:1.5;pointer-events:none;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94)"></div>
           
           <!-- Patamares com destinos -->
           <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;display:flex;flex-direction:column;justify-content:space-between">
             
             <!-- PATAMAR 1: ILHABELA (12.5% = 1000/8000) -->
-            <div style="position:absolute;top:0;left:12.5%;width:2px;height:100%;background:white;opacity:0.6"></div>
+            <div style="position:absolute;top:0;left:12.5%;width:2px;height:100%;background:white;opacity:0.7;box-shadow:0 0 8px rgba(255,255,255,.4)"></div>
             <div style="position:absolute;top:8px;left:12.5%;transform:translateX(-50%);text-align:center;z-index:3">
-              <div style="font-size:32px;margin-bottom:4px">🏝️</div>
-              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 4px rgba(0,0,0,.4);white-space:nowrap">Ilhabela</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.4)">R$ 1k</div>
+              <div style="font-size:32px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🏝️</div>
+              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 6px rgba(0,0,0,.6);white-space:nowrap">Ilhabela</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.6)">R$ 1k</div>
             </div>
             
             <!-- PATAMAR 2: ANGRA DOS REIS (62.5% = 5000/8000) -->
-            <div style="position:absolute;top:0;left:62.5%;width:2px;height:100%;background:white;opacity:0.6"></div>
+            <div style="position:absolute;top:0;left:62.5%;width:2px;height:100%;background:white;opacity:0.7;box-shadow:0 0 8px rgba(255,255,255,.4)"></div>
             <div style="position:absolute;top:8px;left:62.5%;transform:translateX(-50%);text-align:center;z-index:3">
-              <div style="font-size:32px;margin-bottom:4px">⛰️</div>
-              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 4px rgba(0,0,0,.4);white-space:nowrap">Angra</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.4)">R$ 5k</div>
+              <div style="font-size:32px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">⛰️</div>
+              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 6px rgba(0,0,0,.6);white-space:nowrap">Angra</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.6)">R$ 5k</div>
             </div>
             
             <!-- PATAMAR 3: AMAZÔNIA (87.5% = 7000/8000) -->
-            <div style="position:absolute;top:0;left:87.5%;width:2px;height:100%;background:white;opacity:0.6"></div>
+            <div style="position:absolute;top:0;left:87.5%;width:2px;height:100%;background:white;opacity:0.7;box-shadow:0 0 8px rgba(255,255,255,.4)"></div>
             <div style="position:absolute;top:8px;left:87.5%;transform:translateX(-50%);text-align:center;z-index:3">
-              <div style="font-size:32px;margin-bottom:4px">🌳</div>
-              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 4px rgba(0,0,0,.4);white-space:nowrap">Amazônia</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.4)">R$ 7k</div>
+              <div style="font-size:32px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌳</div>
+              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 6px rgba(0,0,0,.6);white-space:nowrap">Amazônia</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.6)">R$ 7k</div>
             </div>
             
             <!-- PATAMAR 4: JAMAICA (100% = 8000/8000) -->
-            <div style="position:absolute;top:0;right:0;width:2px;height:100%;background:white;opacity:0.6"></div>
+            <div style="position:absolute;top:0;right:0;width:2px;height:100%;background:white;opacity:0.7;box-shadow:0 0 8px rgba(255,255,255,.4)"></div>
             <div style="position:absolute;top:8px;right:0;transform:translateX(50%);text-align:center;z-index:3">
-              <div style="font-size:32px;margin-bottom:4px">🌺</div>
-              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 4px rgba(0,0,0,.4);white-space:nowrap">Jamaica</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.8);text-shadow:0 1px 3px rgba(0,0,0,.4)">R$ 8k</div>
+              <div style="font-size:32px;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌺</div>
+              <div style="font-size:11px;font-weight:600;color:white;text-shadow:0 2px 6px rgba(0,0,0,.6);white-space:nowrap">Jamaica</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.6)">R$ 8k</div>
             </div>
           </div>
         </div>
@@ -1023,7 +1026,7 @@
         </p>
       </div>
 
-      <!-- GRID DE DESTINOS (5 apenas) -->
+      <!-- GRID DE DESTINOS (4 principais) -->
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;padding:0;margin-top:48px;">
         
         <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid var(--sage-deep);opacity:1;transition:all 0.3s ease" id="allDest3">
@@ -1312,6 +1315,12 @@
     // Atualizar barra de progresso
     document.getElementById('thermometerBar').style.width = percentage + '%';
     
+    // Atualizar overlay
+    const overlay = document.getElementById('thermometerOverlay');
+    if (overlay) {
+      overlay.style.width = percentage + '%';
+    }
+    
     // Valor atual
     document.getElementById('currentValue').textContent = 'R$ ' + currentAmount.toLocaleString('pt-BR');
     
@@ -1336,19 +1345,15 @@
     destinations.forEach((dest, idx) => {
       const element = document.getElementById(dest.element);
       if (idx <= nextIndex) {
-        // Conquistado ou em andamento
         element.style.opacity = '1';
         element.style.borderColor = 'var(--sage-deep)';
         element.style.backgroundColor = 'white';
       } else if (idx === nextIndex + 1) {
-        // Próximo destino
         element.style.opacity = '0.8';
         element.style.borderColor = 'rgba(132,94,247,0.8)';
         element.style.backgroundColor = 'rgba(132,94,247,0.08)';
       } else {
-        // Futuros
         element.style.opacity = Math.max(0.5, 1 - (idx - nextIndex - 1) * 0.15);
-        element.style.borderColor = 'rgba(132,94,247,' + (0.4 - (idx - nextIndex) * 0.1) + ')';
       }
     });
   }
