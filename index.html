@@ -1055,17 +1055,17 @@
           <div style="padding:16px;border-radius:8px;background:rgba(132,94,247,0.08);opacity:0.7;border:2px dashed var(--ink-soft)" id="allDest4">
             <div style="font-size:32px;margin-bottom:8px;text-align:center">⛰️</div>
             <div style="font-size:12px;font-weight:600;color:var(--ink-soft);text-align:center">Angra Reis</div>
-            <div style="font-size:11px;color:var(--ink-soft);text-align:center">R$ 2.000</div>
+            <div style="font-size:11px;color:var(--ink-soft);text-align:center">R$ 5.000</div>
           </div>
           <div style="padding:16px;border-radius:8px;background:rgba(132,94,247,0.08);opacity:0.6;border:2px dashed var(--ink-soft)" id="allDest5">
             <div style="font-size:32px;margin-bottom:8px;text-align:center">🌳</div>
             <div style="font-size:12px;font-weight:600;color:var(--ink-soft);text-align:center">Amazônia</div>
-            <div style="font-size:11px;color:var(--ink-soft);text-align:center">R$ 3.500</div>
+            <div style="font-size:11px;color:var(--ink-soft);text-align:center">R$ 7.000</div>
           </div>
           <div style="padding:16px;border-radius:8px;background:rgba(132,94,247,0.1);opacity:0.6;border:2px dashed rgba(132,94,247,0.5)" id="allDest6">
             <div style="font-size:32px;margin-bottom:8px;text-align:center">🌺</div>
             <div style="font-size:12px;font-weight:600;color:rgba(132,94,247,0.7);text-align:center">Jamaica</div>
-            <div style="font-size:11px;color:rgba(132,94,247,0.6);text-align:center">R$ 5.000</div>
+            <div style="font-size:11px;color:rgba(132,94,247,0.6);text-align:center">R$ 8.000</div>
           </div>
         </div>
       </div>
@@ -1320,13 +1320,13 @@
     { name: "Guarujá", value: 100, emoji: "🏖️", element: "allDest1" },
     { name: "Ubatuba", value: 500, emoji: "🌴", element: "allDest2" },
     { name: "Ilhabela", value: 1000, emoji: "🏝️", element: "allDest3" },
-    { name: "Angra dos Reis", value: 2000, emoji: "⛰️", element: "allDest4" },
-    { name: "Amazônia", value: 3500, emoji: "🌳", element: "allDest5" },
-    { name: "Jamaica", value: 5000, emoji: "🌺", element: "allDest6" }
+    { name: "Angra dos Reis", value: 5000, emoji: "⛰️", element: "allDest4" },
+    { name: "Amazônia", value: 7000, emoji: "🌳", element: "allDest5" },
+    { name: "Jamaica", value: 8000, emoji: "🌺", element: "allDest6" }
   ];
 
   function updateThermometer(currentAmount = 0) {
-    const maxValue = 5000;
+    const maxValue = 8000;
     const percentage = Math.min((currentAmount / maxValue) * 100, 100);
     
     // Atualizar barra na montanha
