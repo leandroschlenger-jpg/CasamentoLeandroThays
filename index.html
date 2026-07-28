@@ -976,53 +976,45 @@
       </p>
     </div>
 
-    <!-- TERMÔMETRO: BARRA COM PATAMARES E FOTOS -->
+    <!-- TERMÔMETRO: AREIA E PRAIAS -->
     <div style="max-width:100%;margin:64px 0;padding:0 16px;">
       
-      <!-- BARRA DE PROGRESSO COM PATAMARES E FOTOS -->
+      <!-- BARRA DE PROGRESSO -->
       <div style="max-width:100%;margin-bottom:48px;">
         <!-- Barra container -->
-        <div style="position:relative;height:120px;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.15);background:#f0f0f0">
+        <div style="position:relative;height:120px;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.15)">
           
-          <!-- Fundo preto e branco (não preenchido) -->
-          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, #1a1a1a 0%, #333 25%, #555 50%, #777 75%, #999 100%);filter:grayscale(100%);z-index:0"></div>
+          <!-- Fundo com AREIA (não preenchido) -->
+          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, #D4A574 0%, #C19A6B 25%, #D2B48C 50%, #C19A6B 75%, #D4A574 100%);background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><filter id=%22noise%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 seed=%222%22/></filter><rect width=%22100%22 height=%22100%22 fill=%22%23D4A574%22 filter=%22url(%23noise)%22/></svg>');background-size:200px 120px;z-index:0"></div>
           
-          <!-- Preenchimento colorido (progresso) -->
-          <div id="thermometerBar" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg, #51cf66 0%, #339af0 40%, #845ef7 70%, #ff8cc3 100%);width:37.5%;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;filter:saturate(120%)"></div>
+          <!-- Preenchimento com FOTOS DE PRAIAS -->
+          <div id="thermometerBar" style="position:absolute;top:0;left:0;height:100%;width:37.5%;background:linear-gradient(90deg, #FFB347 0%, #87CEEB 40%, #90EE90 70%, #20B2AA 100%);background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=300&crop=entropy&cs=tinysrgb&fit=max');background-size:cover;background-position:center;background-attachment:fixed;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;filter:saturate(1.15) brightness(1.05);box-shadow:inset -4px 0 16px rgba(0,0,0,.2)"></div>
           
           <!-- Patamares com destinos -->
           <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;display:flex;align-items:center">
             
-            <!-- PATAMAR 1: ILHABELA (12.5% = 1000/8000) -->
+            <!-- PATAMAR 1: ILHABELA (12.5%) -->
             <div style="position:absolute;left:12.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="position:relative;width:100%;margin-bottom:0">
-                <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🏝️</div>
-                <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Ilhabela</div>
-              </div>
+              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🏝️</div>
+              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Ilhabela</div>
             </div>
             
-            <!-- PATAMAR 2: ANGRA DOS REIS (62.5% = 5000/8000) -->
+            <!-- PATAMAR 2: ANGRA (62.5%) -->
             <div style="position:absolute;left:62.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="position:relative;width:100%;margin-bottom:0">
-                <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">⛰️</div>
-                <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Angra</div>
-              </div>
+              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">⛰️</div>
+              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Angra</div>
             </div>
             
-            <!-- PATAMAR 3: AMAZÔNIA (87.5% = 7000/8000) -->
+            <!-- PATAMAR 3: AMAZÔNIA (87.5%) -->
             <div style="position:absolute;left:87.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="position:relative;width:100%;margin-bottom:0">
-                <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌳</div>
-                <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Amazônia</div>
-              </div>
+              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌳</div>
+              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Amazônia</div>
             </div>
             
-            <!-- PATAMAR 4: JAMAICA (100% = 8000/8000) -->
+            <!-- PATAMAR 4: JAMAICA (100%) -->
             <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:3;padding-right:8px">
-              <div style="position:relative;width:100%;margin-bottom:0">
-                <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌺</div>
-                <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Jamaica</div>
-              </div>
+              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌺</div>
+              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Jamaica</div>
             </div>
           </div>
         </div>
@@ -1042,7 +1034,7 @@
         </p>
       </div>
 
-      <!-- GRID DE DESTINOS (4 principais) -->
+      <!-- GRID DE DESTINOS -->
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;padding:0;margin-top:48px;">
         
         <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid var(--sage-deep);opacity:1;transition:all 0.3s ease;position:relative" id="allDest3">
