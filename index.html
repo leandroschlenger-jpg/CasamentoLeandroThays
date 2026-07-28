@@ -976,66 +976,85 @@
       </p>
     </div>
 
-    <!-- TERMÔMETRO: AREIA E PRAIAS -->
+    <!-- TABULEIRO: JOGO DE VIAGEM -->
     <div style="max-width:100%;margin:64px 0;padding:0 16px;">
       
-      <!-- BARRA DE PROGRESSO -->
-      <div style="max-width:100%;margin-bottom:48px;">
-        <!-- Barra container -->
-        <div style="position:relative;height:120px;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.15)">
+      <!-- TABULEIRO COM CAMINHO -->
+      <div style="max-width:100%;margin-bottom:48px;background:linear-gradient(135deg, #FFF8DC 0%, #FFE4B5 100%);border-radius:16px;padding:32px;box-shadow:0 12px 40px rgba(0,0,0,.15);position:relative;overflow:hidden">
+        
+        <!-- SVG do caminho tipo tabuleiro -->
+        <svg viewBox="0 0 1200 200" style="width:100%;height:200px;margin-bottom:20px">
+          <!-- Fundo areia -->
+          <rect width="1200" height="200" fill="#D4A574"/>
           
-          <!-- Fundo com AREIA (não preenchido) -->
-          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg, #D4A574 0%, #C19A6B 25%, #D2B48C 50%, #C19A6B 75%, #D4A574 100%);background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><filter id=%22noise%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 seed=%222%22/></filter><rect width=%22100%22 height=%22100%22 fill=%22%23D4A574%22 filter=%22url(%23noise)%22/></svg>');background-size:200px 120px;z-index:0"></div>
+          <!-- Caminho do tabuleiro (traço) -->
+          <path d="M 50 100 L 1150 100" stroke="#8B7355" stroke-width="40" fill="none" opacity="0.3"/>
           
-          <!-- Preenchimento com FOTOS DE PRAIAS -->
-          <div id="thermometerBar" style="position:absolute;top:0;left:0;height:100%;width:37.5%;background:linear-gradient(90deg, #FFB347 0%, #87CEEB 40%, #90EE90 70%, #20B2AA 100%);background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=300&crop=entropy&cs=tinysrgb&fit=max');background-size:cover;background-position:center;background-attachment:fixed;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;filter:saturate(1.15) brightness(1.05);box-shadow:inset -4px 0 16px rgba(0,0,0,.2)"></div>
+          <!-- Paradas/casas -->
+          <circle cx="50" cy="100" r="12" fill="#FF6B6B" opacity="0.7"/>
+          <circle cx="250" cy="100" r="12" fill="#FFB347" opacity="0.7"/>
+          <circle cx="450" cy="100" r="12" fill="#51CF66" opacity="0.7"/>
+          <circle cx="650" cy="100" r="12" fill="#339AF0" opacity="0.7"/>
+          <circle cx="850" cy="100" r="12" fill="#845EF7" opacity="0.7"/>
+          <circle cx="1050" cy="100" r="12" fill="#FF8CC3" opacity="0.7"/>
+          <circle cx="1150" cy="100" r="14" fill="#FFD700"/>
           
-          <!-- Patamares com destinos -->
-          <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;display:flex;align-items:center">
-            
-            <!-- PATAMAR 1: ILHABELA (12.5%) -->
-            <div style="position:absolute;left:12.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🏝️</div>
-              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Ilhabela</div>
-            </div>
-            
-            <!-- PATAMAR 2: ANGRA (62.5%) -->
-            <div style="position:absolute;left:62.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">⛰️</div>
-              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Angra</div>
-            </div>
-            
-            <!-- PATAMAR 3: AMAZÔNIA (87.5%) -->
-            <div style="position:absolute;left:87.5%;top:50%;transform:translateY(-50%);text-align:center;z-index:3">
-              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌳</div>
-              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Amazônia</div>
-            </div>
-            
-            <!-- PATAMAR 4: JAMAICA (100%) -->
-            <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:3;padding-right:8px">
-              <div style="font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">🌺</div>
-              <div style="font-size:9px;font-weight:600;color:white;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;margin-top:2px">Jamaica</div>
-            </div>
+          <!-- Labels dos destinos -->
+          <text x="50" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Start</text>
+          <text x="250" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Ilhabela</text>
+          <text x="450" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Angra</text>
+          <text x="650" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Amazônia</text>
+          <text x="850" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Jamaica</text>
+          <text x="1050" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Bonus</text>
+          <text x="1150" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Fim!</text>
+          
+          <!-- Pinos dos jogadores -->
+          <g id="pinLeandro" style="transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94)">
+            <circle cx="50" cy="60" r="16" fill="white" stroke="#4A90E2" stroke-width="2"/>
+            <text x="50" y="68" text-anchor="middle" font-size="20">💙</text>
+          </g>
+          
+          <g id="pinThays" style="transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94)">
+            <circle cx="50" cy="140" r="16" fill="white" stroke="#E91E63" stroke-width="2"/>
+            <text x="50" y="148" text-anchor="middle" font-size="20">💜</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- INFO PROGRESSO E CONVIDADOS -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px">
+        
+        <!-- Valor Total -->
+        <div style="text-align:center;padding:32px;background:white;border-radius:16px;border:1px solid rgba(110,135,103,.1);box-shadow:0 8px 24px rgba(0,0,0,.06)">
+          <p style="font-family:'Jost',sans-serif;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Meta Atual</p>
+          <div style="font-size:48px;font-weight:700;color:var(--sage-deep);margin-bottom:16px">
+            <span id="currentValue">R$ 1.500</span>
+          </div>
+          <p style="font-size:15px;color:var(--ink-soft);margin-bottom:8px">
+            Próximo: <span id="nextDestination" style="font-weight:600;color:var(--sage-deep);font-size:17px">Ilhabela</span>
+          </p>
+          <p style="font-size:13px;color:#51CF66;font-weight:600">
+            Faltam <span id="faltaValor">R$ 0</span>
+          </p>
+        </div>
+
+        <!-- Convidados & Animação -->
+        <div style="text-align:center;padding:32px;background:linear-gradient(135deg, rgba(81,207,102,.1) 0%, rgba(51,154,240,.1) 100%);border-radius:16px;border:2px dashed var(--sage-deep);box-shadow:0 8px 24px rgba(0,0,0,.06)">
+          <p style="font-family:'Jost',sans-serif;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Convidados em Ação</p>
+          <div style="font-size:42px;margin-bottom:16px" id="guestEmojis">👥</div>
+          <p style="font-size:24px;font-weight:700;color:var(--sage-deep);margin-bottom:8px">
+            <span id="guestCount">0</span>
+          </p>
+          <p style="font-size:12px;color:var(--ink-soft)">convidados apoiando</p>
+          <div style="margin-top:16px;padding:12px;background:white;border-radius:8px">
+            <p style="font-size:11px;color:var(--ink-soft);margin-bottom:8px">Último depósito:</p>
+            <p style="font-size:18px;font-weight:600;color:#FF6B6B" id="lastDonation">-</p>
           </div>
         </div>
       </div>
 
-      <!-- INFO PROGRESSO -->
-      <div style="text-align:center;padding:32px;background:white;border-radius:16px;border:1px solid rgba(110,135,103,.1);box-shadow:0 8px 24px rgba(0,0,0,.06)">
-        <p style="font-family:'Jost',sans-serif;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Meta Atual</p>
-        <div style="font-size:48px;font-weight:700;color:var(--sage-deep);margin-bottom:16px">
-          <span id="currentValue">R$ 1.500</span>
-        </div>
-        <p style="font-size:15px;color:var(--ink-soft);margin-bottom:8px">
-          Próximo: <span id="nextDestination" style="font-weight:600;color:var(--sage-deep);font-size:17px">Ilhabela</span>
-        </p>
-        <p style="font-size:13px;color:#51CF66;font-weight:600">
-          Faltam <span id="faltaValor">R$ 0</span> para completar
-        </p>
-      </div>
-
       <!-- GRID DE DESTINOS -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;padding:0;margin-top:48px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;padding:0;">
         
         <div style="padding:18px;border-radius:12px;background:white;text-align:center;border:2px solid var(--sage-deep);opacity:1;transition:all 0.3s ease;position:relative" id="allDest3">
           <div style="position:absolute;top:8px;right:8px;font-size:18px">✓</div>
@@ -1308,60 +1327,110 @@
     }
   });
 
-  // ============ TERMÔMETRO: JORNADA DE AVENTURAS ============
+  // ============ TABULEIRO: JOGO DE VIAGEM ============
   const destinations = [
-    { name: "Ilhabela", value: 1000, emoji: "🏝️", element: "allDest3" },
-    { name: "Angra dos Reis", value: 5000, emoji: "⛰️", element: "allDest4" },
-    { name: "Amazônia", value: 7000, emoji: "🌳", element: "allDest5" },
-    { name: "Jamaica", value: 8000, emoji: "🌺", element: "allDest6" }
+    { name: "Ilhabela", value: 1000, position: 250 },
+    { name: "Angra dos Reis", value: 5000, position: 450 },
+    { name: "Amazônia", value: 7000, position: 650 },
+    { name: "Jamaica", value: 8000, position: 850 }
   ];
+
+  let guestCount = 0;
 
   function updateThermometer(currentAmount = 0) {
     const maxValue = 8000;
-    const percentage = Math.min((currentAmount / maxValue) * 100, 100);
     
-    // Atualizar barra de progresso
-    document.getElementById('thermometerBar').style.width = percentage + '%';
-    
-
-    // Valor atual
+    // Atualizar valor
     document.getElementById('currentValue').textContent = 'R$ ' + currentAmount.toLocaleString('pt-BR');
     
-    // Encontrar próximo destino
+    // Encontrar próximo destino e calcular posição
     let nextDestination = destinations[0];
     let nextIndex = 0;
+    let currentPosition = 50;
+    
     for (let i = 0; i < destinations.length; i++) {
       if (currentAmount >= destinations[i].value) {
         nextDestination = destinations[i];
         nextIndex = i;
+        currentPosition = destinations[i].position;
       } else {
         break;
       }
     }
     
-    // Próximo destino e valor faltante
+    // Interpolar posição entre destinos atuais
+    if (nextIndex < destinations.length - 1) {
+      const currentDest = destinations[nextIndex];
+      const nextDest = destinations[nextIndex + 1];
+      const progress = (currentAmount - currentDest.value) / (nextDest.value - currentDest.value);
+      const interpolatedPos = currentDest.position + (nextDest.position - currentDest.position) * Math.min(progress, 1);
+      currentPosition = interpolatedPos;
+    } else if (currentAmount >= destinations[destinations.length - 1].value) {
+      currentPosition = 1150;
+    }
+    
+    // Animar pinos
+    const pinLeandro = document.getElementById('pinLeandro');
+    const pinThays = document.getElementById('pinThays');
+    if (pinLeandro && pinThays) {
+      pinLeandro.style.transform = 'translateX(' + (currentPosition - 50) + 'px)';
+      pinThays.style.transform = 'translateX(' + (currentPosition - 50) + 'px)';
+    }
+    
+    // Atualizar próximo destino
     document.getElementById('nextDestination').textContent = nextDestination.name;
     const falta = nextDestination.value - currentAmount;
     document.getElementById('faltaValor').textContent = 'R$ ' + Math.max(0, falta).toLocaleString('pt-BR');
     
-    // Atualizar cards de destinos
+    // Atualizar cards
     destinations.forEach((dest, idx) => {
-      const element = document.getElementById(dest.element);
-      if (idx <= nextIndex) {
-        element.style.opacity = '1';
-        element.style.borderColor = 'var(--sage-deep)';
-        element.style.backgroundColor = 'white';
-      } else if (idx === nextIndex + 1) {
-        element.style.opacity = '0.8';
-        element.style.borderColor = 'rgba(132,94,247,0.8)';
-        element.style.backgroundColor = 'rgba(132,94,247,0.08)';
-      } else {
-        element.style.opacity = Math.max(0.5, 1 - (idx - nextIndex - 1) * 0.15);
+      const element = document.getElementById('allDest' + (idx + 3));
+      if (element) {
+        if (idx <= nextIndex) {
+          element.style.opacity = '1';
+        } else if (idx === nextIndex + 1) {
+          element.style.opacity = '0.8';
+        } else {
+          element.style.opacity = Math.max(0.5, 1 - (idx - nextIndex - 1) * 0.15);
+        }
       }
     });
   }
 
+  function addDonation(amount) {
+    guestCount++;
+    const currentAmount = parseInt(document.getElementById('currentValue').textContent.replace(/[^0-9]/g, '')) || 0;
+    const newAmount = currentAmount + amount;
+    
+    // Atualizar contadores
+    document.getElementById('guestCount').textContent = guestCount;
+    document.getElementById('lastDonation').textContent = 'R$ ' + amount.toLocaleString('pt-BR');
+    
+    // Animar emoji dos convidados
+    const guestEmojis = document.getElementById('guestEmojis');
+    const emojis = ['👥', '👫', '👬', '👭', '🎉', '🎊'];
+    guestEmojis.textContent = emojis[Math.min(guestCount - 1, emojis.length - 1)];
+    guestEmojis.style.animation = 'none';
+    setTimeout(() => {
+      guestEmojis.style.animation = 'pulse 0.5s ease-in-out';
+    }, 10);
+    
+    // Atualizar termômetro
+    updateThermometer(newAmount);
+  }
+
+  // Inicializar
   updateThermometer(1500);
+
+  // Adicionar animação de pulse
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  `;
+  document.head.appendChild(style);
 
   // Observar todas as imagens
   document.querySelectorAll('.photo img').forEach(img => {
